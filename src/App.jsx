@@ -1,9 +1,9 @@
+import { AppRouter } from "./router/AppRouter";
+
 const App = () => {
   return (
-    <h1 className="text-3xl font-bold text-center p-4">
-      Prueba
-    </h1>
-  )
-}
+    <AppRouter />
+  );
+};
 
-export default App
+export default App;
