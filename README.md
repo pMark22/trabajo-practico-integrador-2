@@ -1,16 +1,80 @@
-# React + Vite
+# Trabajo Practico Integrador 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicacion web desarrollada con React y Vite para el Trabajo Practico Integrador II.
 
-Currently, two official plugins are available:
+El proyecto corresponde al frontend del sistema de gestion de blog personal con autenticacion desarrollado en el Trabajo Practico Integrador I.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias utilizadas
 
-## React Compiler
+* React
+* Vite
+* React Router
+* Tailwind CSS
+* JavaScript
+* Fetch API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Instalacion
 
-## Expanding the Oxlint configuration
+Clonar el repositorio y entrar en la carpeta del proyecto:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+git clone https://github.com/pMark22/trabajo-practico-integrador-2.git
+cd trabajo-practico-integrador-2
+```
+
+Instalar las dependencias:
+
+```
+npm install
+```
+
+## Ejecucion
+
+Iniciar el servidor de desarrollo:
+
+```
+npm run dev
+```
+
+La aplicacion se ejecuta normalmente en:
+
+```
+http://localhost:5173
+```
+
+## Backend
+
+Este proyecto utiliza el backend desarrollado en el Trabajo Practico Integrador I.
+
+Repositorio del backend:
+
+https://github.com/pMark22/trabajo-practico-integrador-1
+
+El backend debe estar ejecutandose en:
+
+```
+http://localhost:3000
+```
+
+## Funcionalidades
+
+* Registro de usuarios.
+* Inicio de sesion.
+* Cierre de sesion.
+* Proteccion de rutas.
+* Obtencion del perfil del usuario.
+* Manejo de autenticacion mediante cookies.
+* Manejo de errores HTTP.
+* Validaciones del backend.
+* Navegacion mediante React Router.
+
+## Estructura del proyecto
+
+src/
+componentes/ → Navbar
+hooks/ → useFetch y useForm
+pages/ → Login, Registro y Home
+router/ → rutas y proteccion de rutas
+App.jsx → componente principal
+main.jsx → inicio de la aplicacion
+index.css → estilos y Tailwind
