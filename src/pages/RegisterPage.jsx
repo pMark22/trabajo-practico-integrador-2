@@ -17,6 +17,34 @@ export const RegisterPage = () => {
     });
   };
 
+  const obtenerMensajeError = () => {
+    if (!error) {
+      return "";
+    }
+
+    if (error.status === 400) {
+      if (error.data?.errors) {
+        return error.data.errors.map((item) => item.msg).join(" ");
+      }
+
+      return "Los datos ingresados no son validos.";
+    }
+
+    if (error.status === 401) {
+      return "No estas autorizado.";
+    }
+
+    if (error.status === 403) {
+      return "No tenes permisos para realizar esta accion.";
+    }
+
+    if (error.status === 500) {
+      return "Ocurrio un error en el servidor.";
+    }
+
+    return "Ocurrio un error.";
+  };
+
   return (
     <div className="flex justify-center p-8">
       <form onSubmit={handleSubmit} className="w-80">
@@ -72,7 +100,9 @@ export const RegisterPage = () => {
         </button>
 
         {loading && <p>Cargando...</p>}
-        {error && <p>{error.message}</p>}
+
+        {error && <p>{obtenerMensajeError()}</p>}
+
         {data && <p>Usuario registrado correctamente</p>}
       </form>
     </div>

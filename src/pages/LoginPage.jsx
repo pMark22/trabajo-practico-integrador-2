@@ -24,6 +24,30 @@ export const LoginPage = () => {
     }
   };
 
+  const obtenerMensajeError = () => {
+    if (!error) {
+      return "";
+    }
+
+    if (error.status === 400) {
+      return "Los datos ingresados no son validos.";
+    }
+
+    if (error.status === 401) {
+      return "Email o contraseña incorrectos.";
+    }
+
+    if (error.status === 403) {
+      return "No tenes permisos para realizar esta accion.";
+    }
+
+    if (error.status === 500) {
+      return "Ocurrio un error en el servidor.";
+    }
+
+    return "Ocurrio un error.";
+  };
+
   return (
     <div className="flex justify-center p-8">
       <form onSubmit={handleSubmit} className="w-80">
@@ -52,7 +76,9 @@ export const LoginPage = () => {
         </button>
 
         {loading && <p>Cargando...</p>}
-        {error && <p>{error.message}</p>}
+
+        {error && <p>{obtenerMensajeError()}</p>}
+
         {data && <p>Respuesta recibida</p>}
       </form>
     </div>
