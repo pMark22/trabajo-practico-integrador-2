@@ -1,23 +1,43 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { Navbar } from "../componentes/Navbar.jsx";
 import { LoginPage } from "../pages/LoginPage.jsx";
 import { RegisterPage } from "../pages/RegisterPage.jsx";
 import { HomePage } from "../pages/HomePage.jsx";
-import { Navbar } from "../componentes/Navbar.jsx";
+import { ProtectedRoute } from "./ProtectedRoute.jsx";
+import { PublicRoute } from "./PublicRoute.jsx";
 
 export const AppRouter = () => {
   return (
     <Router>
-        <Navbar />
+      <Navbar />
+
       <Routes>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

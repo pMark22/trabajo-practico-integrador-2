@@ -1,20 +1,27 @@
+import { useNavigate } from "react-router";
 import { useForm } from "../hooks/useForm";
 import { useFetch } from "../hooks/useFetch";
 
 export const LoginPage = () => {
   const { formulario, handleChange } = useForm();
   const { fetchData, data, loading, error } = useFetch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetchData("http://localhost:3000/api/auth/login", {
+    const result = await fetchData("http://localhost:3000/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formulario),
     });
+
+    if (result) {
+      localStorage.setItem("isLogged", "true");
+      navigate("/home");
+    }
   };
 
   return (

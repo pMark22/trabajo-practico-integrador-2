@@ -29,6 +29,7 @@ export const useFetch = () => {
       return result;
     } catch (error) {
       setError(error);
+      return null;
     } finally {
       setLoading(false);
     }
