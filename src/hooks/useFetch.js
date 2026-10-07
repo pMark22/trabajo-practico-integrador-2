@@ -8,6 +8,7 @@ export const useFetch = () => {
   const fetchData = async (url, options = {}) => {
     setLoading(true);
     setError(null);
+    setData(null);
 
     try {
       const response = await fetch(url, {
@@ -17,7 +18,15 @@ export const useFetch = () => {
 
       const result = await response.json();
 
+      if (!response.ok) {
+        const error = new Error("Ocurrio un error");
+        error.status = response.status;
+        error.data = result;
+        throw error;
+      }
+
       setData(result);
+      return result;
     } catch (error) {
       setError(error);
     } finally {
