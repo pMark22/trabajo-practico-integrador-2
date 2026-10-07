@@ -18,36 +18,36 @@ export const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="flex justify-center p-8">
+      <form onSubmit={handleSubmit} className="w-80">
+        <h1 className="mb-4 text-xl">Login</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formulario.email || ""}
-            onChange={handleChange}
-          />
-        </div>
+        <input
+          className="mb-3 w-full border p-2"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formulario.email || ""}
+          onChange={handleChange}
+        />
 
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formulario.password || ""}
-            onChange={handleChange}
-          />
-        </div>
+        <input
+          className="mb-3 w-full border p-2"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formulario.password || ""}
+          onChange={handleChange}
+        />
 
-        <button type="submit">Iniciar sesion</button>
+        <button className="border px-4 py-2" type="submit">
+          Iniciar sesion
+        </button>
+
+        {loading && <p>Cargando...</p>}
+        {error && <p>{error.message}</p>}
+        {data && <p>Respuesta recibida</p>}
       </form>
-
-      {loading && <p>Cargando...</p>}
-      {error && <p>{error.message}</p>}
-      {data && <p>Respuesta recibida</p>}
     </div>
   );
 };

@@ -2,19 +2,12 @@ import { Link } from "react-router";
 
 export const Navbar = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-            <Link to="/home">Home</Link>
-        </li>
-        <li>
-            <Link to="/login">Login</Link>
-        </li>
-        <li>
-            <Link to="/register">Register</Link>
-        </li>
-      </ul>
+    <nav className="border-b p-4">
+      <div className="flex justify-center gap-6">
+        <Link to="/home">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </div>
     </nav>
   );
 };
-export default Navbar;
